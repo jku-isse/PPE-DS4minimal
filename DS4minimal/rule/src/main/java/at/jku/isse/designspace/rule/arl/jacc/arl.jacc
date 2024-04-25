@@ -1,0 +1,175 @@
+%class ArlParser
+%interface ArlTokenKind
+
+//scanner options
+%next nextToken()
+%get getTokenKind()
+%semantic Object: currentNode
+
+
+%start ArlExpression
+
+%token INTEGER REAL STRING NAME
+%token '+' '-'  '*' '/' NOT
+%token IMPLIES XOR OR AND '=' NEQ   // <>
+%token '<' '>' LEQ GEQ              // <= >=
+%token '.' DOUBLEDOT ARROW      // -> ..
+%token ':' DOUBLECOLON          // ::
+%token '{' '}' '|' '(' ')' '[' ']'
+%token SET LIST MAP COLLECTION
+%token TUPLE FALSE TRUE NULL
+%token EXISTS FORALL COLLECT REJECT SELECT ITERATE
+%token AS_TYPE IS_TYPE_OF IS_KIND_OF
+%token ',' AT LET DEF IN     // @
+%token '?' '^' DOUBLEHAT            //^^
+%token IF THEN ELSE ENDIF
+%token NEXT EVENTUALLY ALWAYS UNTIL
+%token ASSOONAS EVERYTIME
+
+//Operation Precedence (from low to high)
+%left LETOP
+%left IMPLIES
+%left XOR
+%left OR
+%left AND
+%left '=' NEQ
+%left '<' '>' LEQ GEQ
+%left '+' '-'
+%left '*' '/'
+%left NOT UMINUS
+%left UNTIL
+%left NEXT EVENTUALLY ALWAYS
+%right '.' ARROW
+%right '^' DOUBLEHAT
+
+
+
+%%
+
+ArlExpression           : LetExp                                                { $$ = $1; }
+                        | DefExp                                                { $$ = $1; }
+                        | OperatorExp                                           { $$ = $1; }
+                        ;
+
+SimpleName              : NAME                                                  { $$ = createSimpleName((ArlToken)$1); }
+                        ;
+
+LiteralExp              : PrimitiveLiteralExp                                   { $$ = $1; }
+                        | CollectionLiteralExp                                  { $$ = $1; }
+                        ;
+
+CollectionLiteralExp    : CollectionName '{' CollectionLiteralParts '}'         { $$ = createCollectionLiteral($1, $3); }
+                        | CollectionName '{' '}'                                { $$ = createCollectionLiteral($1, null); }
+                        ;
+
+CollectionName          : SET                                                   { $$ = "Set"; }
+                        | LIST                                                  { $$ = "List"; }
+                        | MAP                                                   { $$ = "Map"; }
+                        | COLLECTION                                            { $$ = "Collection"; }
+                        ;
+
+CollectionLiteralParts  : CollectionLiteralPart                                 { $$ = createCollectionLiteralParts(null, $1);  }
+                        | CollectionLiteralParts ',' CollectionLiteralPart      { $$ = createCollectionLiteralParts($1, $3);    }
+                        ;
+
+CollectionLiteralPart   : CollectionRange                                       { $$ = $1; }
+                        | ArlExpression                                         { $$ = $1; }
+                        ;
+
+CollectionRange         : ArlExpression DOUBLEDOT ArlExpression                 { $$ = createCollectionRange($1, $3); }
+                        ;
+
+PrimitiveLiteralExp     : INTEGER                                               { $$ = createIntegerLiteral((ArlToken)$1); }
+                        | REAL                                                  { $$ = createRealLiteral((ArlToken)$1); }
+                        | STRING                                                { $$ = createStringLiteral((ArlToken)$1); }
+                        | FALSE                                                 { $$ = createBooleanLiteral(false); }
+                        | TRUE                                                  { $$ = createBooleanLiteral(true); }
+                        | NULL                                                  { $$ = createNullLiteral((ArlToken)$1); }
+                        ;
+
+TypeExp                 : '<' SimpleTypeExp '>'                                 { $$ = createType($2); }
+                        | CollectionName TypeExp                                { $$ = createCollectionType($1, $2); }
+                        ;
+
+SimpleTypeExp           : SimpleName                                            { $$ = createPathName(null, $1); }
+                        | SimpleTypeExp '/' SimpleName                          { $$ = createPathName($1, $3); }
+                        ;
+
+OperatorExp             : SimpleName                                            { $$ = createVariableReference($1); }
+                        | SimpleName '(' ')'                                    { $$ = createOperationCall(null, $1, null); }
+                        | SimpleName '(' ArgumentsExp ')'                       { $$ = createOperationCall(null, $1, $3); }
+                        | SimpleName '(' TypeExp ')'                            { $$ = createTypeOperationCall(null, $1, $3); }
+                        | LiteralExp                                            { $$ = $1; }
+                        | IfExp                                                 { $$ = $1; }
+                        | OperatorExp '+' OperatorExp           	            { $$ = createInlineOperationCall($1, "+", $3); }
+                        | OperatorExp '-' OperatorExp           	            { $$ = createInlineOperationCall($1, "-", $3); }
+                        | OperatorExp '*' OperatorExp           	            { $$ = createInlineOperationCall($1, "*", $3); }
+                        | OperatorExp '/' OperatorExp           	            { $$ = createInlineOperationCall($1, "/", $3); }
+                        | OperatorExp IMPLIES OperatorExp       	            { $$ = createInlineOperationCall($1, "implies", $3); }
+                        | OperatorExp XOR OperatorExp           	            { $$ = createInlineOperationCall($1, "xor", $3); }
+                        | OperatorExp OR OperatorExp            	            { $$ = createInlineOperationCall($1, "or", $3); }
+                        | OperatorExp AND OperatorExp           	            { $$ = createInlineOperationCall($1, "and", $3); }
+                        | OperatorExp NEQ OperatorExp           	            { $$ = createInlineOperationCall($1, "<>", $3); }
+                        | OperatorExp '=' OperatorExp           	            { $$ = createInlineOperationCall($1, "=", $3); }
+                        | OperatorExp '<' OperatorExp           	            { $$ = createInlineOperationCall($1, "<", $3); }
+                        | OperatorExp '>' OperatorExp           	            { $$ = createInlineOperationCall($1, ">", $3); }
+                        | OperatorExp LEQ OperatorExp           	            { $$ = createInlineOperationCall($1, "<=", $3); }
+                        | OperatorExp GEQ OperatorExp           	            { $$ = createInlineOperationCall($1, ">=", $3); }
+                        | '(' OperatorExp ')'                     	            { $$ = createExpressionInParenthesis($2); }
+                        | '-' OperatorExp             	                        { $$ = createInlineOperationCall($2, "-", null); }
+                        | NOT OperatorExp                         	            { $$ = createInlineOperationCall($2, "not", null); }
+                        | TemporalOperatorExp
+                        | OperatorExp '.' SimpleName                                                { $$ = createPropertyCall($1, $3); }
+                        | OperatorExp '.' SimpleName                                                { $$ = createPropertyCall($1, $3); }
+                        | OperatorExp '.' SimpleName '('  ')'                                       { $$ = createOperationCall($1, $3, null); }
+                        | OperatorExp '.' SimpleName '(' ArgumentsExp ')'                           { $$ = createOperationCall($1, $3, $5); }
+                        | OperatorExp '.' SimpleName '(' TypeExp ')'                                { $$ = createTypeOperationCall($1, $3, $5); }
+                        | OperatorExp ARROW SimpleName '(' ')'                        			                                    { $$ = createOperationCall($1, $3, null); }
+                        | OperatorExp ARROW SimpleName '(' ArgumentsExp ')'           			                                    { $$ = createOperationCall($1, $3, $5); }
+                        | OperatorExp ARROW SimpleName '(' TypeExp ')'           			                                        { $$ = createTypeOperationCall($1, $3, $5); }
+						| OperatorExp ARROW IteratorName '(' OperatorExp ')'   						                                { openNewEnvironment(); $$ = createIteratorOperationCall($1, $3, null, null, $5); closeCurrentEnvironment(); }
+						| OperatorExp ARROW IteratorName '(' IteratorVarDeclaration '|' OperatorExp ')'                             { openNewEnvironment(); $$ = createIteratorOperationCall($1, $3, $5,   null, $7); closeCurrentEnvironment(); }
+                        | OperatorExp ARROW IteratorName '(' IteratorVarDeclaration ',' IteratorVarDeclaration '|' OperatorExp ')'  { openNewEnvironment(); $$ = createIteratorOperationCall($1, $3, $5,   $7,   $9); closeCurrentEnvironment(); }
+                        | OperatorExp ARROW IterateName '(' IteratorVarDeclaration ';' InitVarDeclaration '|' OperatorExp ')'       { openNewEnvironment(); $$ = createIterateOperationCall($1, $5, $7, $9); closeCurrentEnvironment(); }
+                        | OperatorExp ARROW IterateName '(' InitVarDeclaration '|' OperatorExp ')'                                  { openNewEnvironment(); $$ = createIterateOperationCall($1, null, $5, $7); closeCurrentEnvironment(); }
+                        ;
+
+TemporalOperatorExp     :NEXT  '(' OperatorExp ')'                                                  { $$ = createInlineOperationCall(null, "next", $3); }
+                        | EVENTUALLY  '(' OperatorExp ')'                                           { $$ = createInlineOperationCall(null, "eventually", $3); }
+                        | ALWAYS  '(' OperatorExp ')'                                               { $$ = createInlineOperationCall(null, "always", $3); }
+                        | UNTIL  '(' OperatorExp ',' OperatorExp ')'                                { $$ = createInlineOperationCall($3, "until", $5); }
+                        | ASSOONAS '(' OperatorExp ',' OperatorExp ')'                              { $$ = createInlineOperationCall($3, "asSoonAs", $5); }
+                        | EVERYTIME '(' OperatorExp ',' OperatorExp ')'                             { $$ = createInlineOperationCall($3, "everytime", $5); }
+                        ;
+
+IteratorName            : FORALL                                                { $$ = "forAll"; }
+                        | EXISTS                                                { $$ = "exists"; }
+                        | COLLECT                                               { $$ = "collect"; }
+                        | REJECT                                                { $$ = "reject"; }
+                        | SELECT                                                { $$ = "select"; }
+                        ;
+
+IterateName             : ITERATE                                               { $$ = "iterate"; }
+                        ;
+
+IteratorVarDeclaration	: SimpleName 								            { $$ = createIteratorVariable((String)$1, null); }
+						| SimpleName ':' TypeExp						        { $$ = createIteratorVariable((String)$1, $3); }
+						;
+
+InitVarDeclaration      : SimpleName ':' TypeExp '=' OperatorExp                { $$ = createInitVariableDeclaration((String)$1, $3, $5); }
+                        ;
+
+ArgumentsExp            : OperatorExp                                           { $$ = createArgumentList(null, $1); }
+                        | ArgumentsExp ',' OperatorExp                          { $$ = createArgumentList($1, $3); }
+                        ;
+
+LetExp                  : LET InitVarDeclaration IN ArlExpression               { openNewEnvironment(); $$ = createLetExpression($2, $4); closeCurrentEnvironment(); }
+                        ;
+
+DefExp                  : DEF SimpleName ':' TypeExp '=' ArlExpression          { $$ = createDefExpression($2, $4, $6); }
+                        ;
+
+IfExp                   : IF ArlExpression THEN ArlExpression ELSE ArlExpression ENDIF              { $$ = createIfExp($2, $4, $6); }
+                        ;
+
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Fetch Jama Item(s)</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<h1>Fetch Jama Item(s)</h1>
+		<hr>
+		<h2>Fetch</h2>		
+
+		 <form action="#" th:action="@{/jamaconnector/fetchItem}" th:object="${itemidentifier}"
+            method="POST">
+            <input type="text" th:field="*{id}" placeholder="Item Id, DocKey, or FilterId"
+                class="form-control mb-4 col-4"> 
+            <select type="text"
+                th:field="*{idType}" placeholder="IdentifierType"
+                class="form-control mb-4 col-4">
+                 <option value="JamaItemId">Item Identifier (Integer)</option>
+                 <option value="JamaItemDocKey">Item Document Key (String)</option>
+                 <option value="JamaFilterId">Filter Identifier (Integer)</option>
+ 			</select>
+            <button type="submit" class="btn btn-info col-2">Fetch</button>
+        </form>
+		<hr>
+
+		<a th:href="@{/jamaconnector/}"> Back to Jama Item List</a>
+	</div>
+</body>
+</html>

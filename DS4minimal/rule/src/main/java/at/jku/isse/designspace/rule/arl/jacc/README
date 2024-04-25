@@ -1,0 +1,19 @@
+Step 1) make sure to have the jacc.jar in your PATH (download from http://web.cecs.pdx.edu/~mpj/jacc/)
+Step 2) run the parserGenerator.bat (or open a terminal and run jacc arl.jacc in this folder)
+Step 3) copy the content of the 2 .java generated files to %at.jku.isse.designspace.rule.arl.parser%
+Obs: do not replace the content of ArlParser.java that is written below the // ------------------- hand-written code --------------------- comment
+
+Step 4) change the arl.flex file to include new tokens
+Step 5) generate the ARLScanner class from the arl.flex using Jflex (https://www.jflex.de/)
+Step 6) copy the ARLScanner file to the parser directory
+OBS: depending on the version of Jflex used, some errors will appear (most casting). One error is related to the constructor of ARLScanner. In this case,
+create a new constructor using the code below:
+
+/**
+   * Creates a new scanner
+   *
+   * @param   in  the java.io.Reader to read input from.
+   */
+  public ArlScanner(java.io.InputStream in) {
+    this(new java.io.InputStreamReader(in));
+  } 

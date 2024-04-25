@@ -1,0 +1,254 @@
+{
+  "taskDefinitions": [
+    {
+      "expectedInput": {
+        "jama": {
+          "id": "JamaItem"
+        },
+        "jira": {
+          "id": "JiraIssue"
+        }
+      },
+      "expectedOutput": {
+        "reqs": {
+          "id": "JamaItem"
+        }
+      },
+      "id": "DefineReqs"
+    },
+    {
+      "expectedInput": {
+        "reqs": {
+          "id": "JamaItem"
+        }
+      },
+      "expectedOutput": {
+        "specs": {
+          "id": "JamaItem"
+        }
+      },
+      "id": "Refine2Specs"
+    },
+    {
+      "expectedInput": {
+        "reqs": {
+          "id": "JamaItem"
+        }
+      },
+      "expectedOutput": {
+        "docs": {
+          "id": "JamaItem"
+        }
+      },
+      "id": "RefineDocs"
+    },
+    {
+      "expectedInput": {
+        "reqs": {
+          "id": "JamaItem"
+        },
+        "specs": {
+          "id": "JamaItem"
+        }
+      },
+      "expectedOutput": {
+        "tracereview": {
+          "id": "ResourceLink"
+        }
+      },
+      "id": "Review"
+    }
+  ],
+  "dnds": [
+    {
+      "inB": [],
+      "outB": [
+        {
+          "name": "outTo-DefineReqs",
+          "task": "DefineReqs",
+          "hasActivationCondition": false,
+          "hasDataFlow": true
+        }
+      ],
+      "hasExternalContextRules": false,
+      "hasExternalInBranchRules": false,
+      "hasExternalOutBranchRules": false,
+      "inBranchingType": "AND",
+      "outBranchingType": "AND",
+      "mappings": [
+        {
+          "from": [
+            {
+              "first": "TestProc1",
+              "second": "procWPjama"
+            }
+          ],
+          "to": [
+            {
+              "first": "DefineReqs",
+              "second": "jama"
+            }
+          ],
+          "mappingType": "ANY"
+        }
+      ],
+      "id": "0"
+    },
+    {
+      "inB": [
+        {
+          "name": "inFrom-Review",
+          "task": "Review",
+          "hasActivationCondition": false,
+          "hasDataFlow": true
+        }
+      ],
+      "outB": [],
+      "hasExternalContextRules": false,
+      "hasExternalInBranchRules": false,
+      "hasExternalOutBranchRules": false,
+      "inBranchingType": "AND",
+      "outBranchingType": "AND",
+      "mappings": [],
+      "id": "1"
+    },
+    {
+      "inB": [
+        {
+          "name": "inFrom-DefineReqs",
+          "task": "DefineReqs",
+          "hasActivationCondition": false,
+          "hasDataFlow": true
+        }
+      ],
+      "outB": [
+        {
+          "name": "outTo-Refine2Specs",
+          "task": "Refine2Specs",
+          "hasActivationCondition": false,
+          "hasDataFlow": true
+        },
+        {
+          "name": "outTo-RefineDocs",
+          "task": "RefineDocs",
+          "hasActivationCondition": false,
+          "hasDataFlow": true
+        }
+      ],
+      "hasExternalContextRules": false,
+      "hasExternalInBranchRules": false,
+      "hasExternalOutBranchRules": false,
+      "inBranchingType": "AND",
+      "outBranchingType": "AND",
+      "mappings": [
+        {
+          "from": [
+            {
+              "first": "DefineReqs",
+              "second": "reqs"
+            }
+          ],
+          "to": [
+            {
+              "first": "Refine2Specs",
+              "second": "reqs"
+            }
+          ],
+          "mappingType": "ANY"
+        },
+        {
+          "from": [
+            {
+              "first": "DefineReqs",
+              "second": "reqs"
+            }
+          ],
+          "to": [
+            {
+              "first": "RefineDocs",
+              "second": "reqs"
+            }
+          ],
+          "mappingType": "ANY"
+        }
+      ],
+      "id": "2"
+    },
+    {
+      "inB": [
+        {
+          "name": "inFrom-Refine2Specs",
+          "task": "Refine2Specs",
+          "hasActivationCondition": false,
+          "hasDataFlow": true
+        },
+        {
+          "name": "inFrom-RefineDocs",
+          "task": "RefineDocs",
+          "hasActivationCondition": false,
+          "hasDataFlow": true
+        }
+      ],
+      "outB": [
+        {
+          "name": "outTo-Review",
+          "task": "Review",
+          "hasActivationCondition": false,
+          "hasDataFlow": true
+        }
+      ],
+      "hasExternalContextRules": false,
+      "hasExternalInBranchRules": false,
+      "hasExternalOutBranchRules": false,
+      "inBranchingType": "AND",
+      "outBranchingType": "AND",
+      "mappings": [
+        {
+          "from": [
+            {
+              "first": "DefineReqs",
+              "second": "reqs"
+            }
+          ],
+          "to": [
+            {
+              "first": "Review",
+              "second": "reqs"
+            }
+          ],
+          "mappingType": "ANY"
+        },
+        {
+          "from": [
+            {
+              "first": "Refine2Specs",
+              "second": "specs"
+            }
+          ],
+          "to": [
+            {
+              "first": "Review",
+              "second": "specs"
+            }
+          ],
+          "mappingType": "ANY"
+        }
+      ],
+      "id": "3"
+    }
+  ],
+  "expectedInput": {
+    "procWPjama": {
+      "id": "JamaItem"
+    }
+  },
+  "expectedOutput": {
+    "specs": {
+      "id": "JamaItem"
+    },
+    "hlreqs": {
+      "id": "JamaItem"
+    }
+  },
+  "id": "TestProc1"
+}

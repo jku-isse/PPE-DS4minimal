@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <groupId>at.jku.isse.designspace</groupId>
+    <version>2.5.0</version>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>artifact-connector.azure</artifactId>
+
+    <distributionManagement>
+        <repository>
+            <id>JKU.ISSE</id>
+            <url>http://3.66.206.6:9999/snapshots</url>
+        </repository>
+    </distributionManagement>
+
+    <repositories>
+        <!-- The order of definitions matters. Explicitly defining central here
+            to make sure it has the highest priority. -->
+        <!-- Main Maven repository -->
+        <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <!-- own ones -->
+        <repository>
+            <id>JKU.ISSE</id>
+            <url>http://3.66.206.6:9999/snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>at.jku.isse.designspace</groupId>
+            <artifactId>artifact-connector.core</artifactId>
+            <version>1.4.0</version>
+            <scope>compile</scope>
+        </dependency>
+        		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.30</version>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.10.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-test</artifactId>
+    		<version>3.2.4</version>
+    		<scope>test</scope>
+		</dependency>
+<!--		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20220320</version>
+			<scope>test</scope>
+		</dependency>-->
+    </dependencies>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
+
+</project>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Jama Items</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-2" align="center">
+
+<h3>Jama Item List</h3>
+<a th:href="@{/jamaconnector/fetchItem}" class="btn btn-primary btn-sm mb-3" >Fetch Jama Item</a>
+	<table style="width:80%" border="1"
+		class = "table table-striped table-responsive-md">
+	<thead>
+<tr>
+	<th>Id</th>
+	<th>DocKey</th>
+	<th>Name</th>
+	<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="item:${allitems}">
+		<td th:text="${item.id}"></td>
+		<td th:text="${item.docKey}"></td>
+		<td th:text="${item.name}"></td>
+		<td th:text="${item.status}"></td>
+		<td> <a th:href="@{/jamaconnector/fetchItem/{id}(id=${item.id})}"
+				class="btn btn-primary">Refetch</a>
+				<a th:href="@{/instance/show?id={id}(id=${item.internalId})}"
+				class="btn btn-primary">Details</a>
+	</td>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>

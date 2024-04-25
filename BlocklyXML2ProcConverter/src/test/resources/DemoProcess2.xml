@@ -1,0 +1,117 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="un05j[MTL.X~5saKuk$9">jama</variable>
+    <variable id="4=^jB.SLUY75hwB+AQke">jira</variable>
+    <variable id="17YF_pk)h8IaQ}gmU$}B">checkissue</variable>
+  </variables>
+  <block type="procedures_defnoreturn" id="E:!DEIP~B%zCw/Mc=+sG" x="-187" y="-312">
+    <field name="NAME">DemoProcess2</field>
+    <comment pinned="false" h="80" w="160">Describe this function...</comment>
+    <statement name="STACK">
+      <block type="variables_set" id="bEm-}gsvE8g9QaH{.Z6u">
+        <field name="VAR" id="un05j[MTL.X~5saKuk$9">jama</field>
+        <value name="VALUE">
+          <block type="artifact" id="@[Q,95T7XP4weV*H};De">
+            <field name="Type">IJamaArtifact</field>
+          </block>
+        </value>
+        <next>
+          <block type="step" id=";3O5pY$|3JMzG{k)9wOp">
+            <field name="StepId">Evaluate</field>
+            <statement name="Input">
+              <block type="artuse" id="m0M:Bq{.7Qr)-:gR7[rt">
+                <field name="roletext">Role</field>
+                <field name="NAME">jama</field>
+                <value name="NAME">
+                  <block type="variables_get" id="$m/Ta_!zZN185#_vc2[Z">
+                    <field name="VAR" id="un05j[MTL.X~5saKuk$9">jama</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <statement name="Output">
+              <block type="variables_set" id="g/v=/9]tCP${_}NxFRhE">
+                <field name="VAR" id="4=^jB.SLUY75hwB+AQke">jira</field>
+                <value name="VALUE">
+                  <block type="artifact" id="]|S_9ZU`]x[%OxXIT})G">
+                    <field name="Type">IJiraArtifact</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="B0]`pxQWJt`]Z*=,zJ0)">
+                    <field name="VAR" id="17YF_pk)h8IaQ}gmU$}B">checkissue</field>
+                    <value name="VALUE">
+                      <block type="artifact" id="h9u(pg)gE`qeDIvw)-Q(">
+                        <field name="Type">IJiraArtifact</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="artuse" id="ZIYQ-:1tjTAnS2f.zEr(">
+                        <field name="roletext">Role</field>
+                        <field name="NAME">jira</field>
+                        <value name="NAME">
+                          <block type="variables_get" id="JmT}zf-|:]kI3`4E^99N">
+                            <field name="VAR" id="4=^jB.SLUY75hwB+AQke">jira</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="artuse" id="xB1Z!|b47hz4AS~eIz`K">
+                            <field name="roletext">Role</field>
+                            <field name="NAME">checkissue</field>
+                            <value name="NAME">
+                              <block type="variables_get" id="nP6RDavRjv+%_PeF4JzS">
+                                <field name="VAR" id="17YF_pk)h8IaQ}gmU$}B">checkissue</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="step" id="V$lqH?.u`!QOFT?^5NeC">
+                <field name="StepId">Execute</field>
+                <statement name="Input">
+                  <block type="artuse" id="lA;:fhX/lts~lLC/G6n^">
+                    <field name="roletext">Role</field>
+                    <field name="NAME">jama</field>
+                    <value name="NAME">
+                      <block type="variables_get" id="%lZy)6{/T+jtoEyv[U@E">
+                        <field name="VAR" id="un05j[MTL.X~5saKuk$9">jama</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="artuse" id="0OY|G@V;fV3Y7Uh|.#3U">
+                        <field name="roletext">Role</field>
+                        <field name="NAME">jira</field>
+                        <value name="NAME">
+                          <block type="variables_get" id="uejHm#NyJW~tzAg]K~iK">
+                            <field name="VAR" id="4=^jB.SLUY75hwB+AQke">jira</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="artuse" id="m_4Cwj,V.Xw5cHSmZv*E">
+                            <field name="roletext">Role</field>
+                            <field name="NAME">checkissue</field>
+                            <value name="NAME">
+                              <block type="variables_get" id="6d%jcmvIkUSsb-^^W!~l">
+                                <field name="VAR" id="17YF_pk)h8IaQ}gmU$}B">checkissue</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

@@ -1,0 +1,48 @@
+/* Background needs a stronger selector to not be overridden */
+[part~="cell"].success {
+    background: rgba(0, 128, 0, 0.51);
+}
+.error {
+    background: rgba(255, 0, 0, 0.51);
+}
+
+.warn {
+  background-color: yellow;
+}
+
+.repair {
+  background-color: lightgreen;
+}
+
+.repairable {
+	background-color: lightskyblue;
+}
+.column-center {
+    text-align: center;
+    text-overflow: clip;
+}
+
+vaadin-grid-cell-content {
+    text-overflow: clip;
+}
+
+.card-border {
+    border-color: black;
+    border-radius: 15px;
+    border-style: solid;
+    border-width: thin;
+    margin: 0px 0px 0.5em;
+}
+
+.upload-background {
+    /*border-radius: 15px;*/
+    background-color: aliceblue;
+    border-radius: 5px;
+    align-items: baseline;
+    padding: 0.5em;
+    width: 100%;
+}
+
+.scrollable {
+    overflow-y: auto;
+}

@@ -1,0 +1,462 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="d,%@(u#o4|5tc-2_)Spi">jamaitem</variable>
+    <variable id="un05j[MTL.X~5saKuk$9">jama</variable>
+    <variable id="4=^jB.SLUY75hwB+AQke">jira</variable>
+  </variables>
+  <block type="procedures_defnoreturn" id="9]N?iaS{^hJ7!!TSDJW?" x="-387" y="113">
+    <field name="NAME">frqV1</field>
+    <comment pinned="false" h="80" w="160">Describe this function...</comment>
+    <statement name="STACK">
+      <block type="variables_set" id="o!uAb)wzk/(qSBEI9;N9">
+        <field name="VAR" id="un05j[MTL.X~5saKuk$9">jama</field>
+        <value name="VALUE">
+          <block type="artifact" id="H3|GpCLNp1WZEoter;M?">
+            <field name="Type">IJamaArtifact</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="f*A5~}P-|tbNFSEy~bua">
+            <field name="VAR" id="4=^jB.SLUY75hwB+AQke">jira</field>
+            <value name="VALUE">
+              <block type="artifact" id="F8ycTy0(%4TXmCmf%Zc?">
+                <field name="Type">IJiraArtifact</field>
+              </block>
+            </value>
+            <next>
+              <block type="step" id="v;?JhQ.,s`KgsfC~k,s=">
+                <field name="StepId">S3</field>
+                <statement name="Input">
+                  <block type="artuse" id="OQN*eY;B/o,Uu]0K-m{?">
+                    <field name="roletext">Role</field>
+                    <field name="NAME">jira</field>
+                    <value name="NAME">
+                      <block type="variables_get" id="ygGM:ljOOQv~h2f?gk=*">
+                        <field name="VAR" id="4=^jB.SLUY75hwB+AQke">jira</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="artuse" id="MLzsc]Lu_rvoyWg#OxiO">
+                        <field name="roletext">Role</field>
+                        <field name="NAME">jama</field>
+                        <value name="NAME">
+                          <block type="variables_get" id="AtZqj*}AU[P4e@}XA#8m">
+                            <field name="VAR" id="un05j[MTL.X~5saKuk$9">jama</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <statement name="Transitions">
+                  <block type="transition" id="GV3fdA_vod`hZs!re4h;">
+                    <field name="State">COMPLETED</field>
+                    <value name="condition">
+                      <block type="logic_compare" id="iD0_g@s}JwwbOLy=U)st">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="fieldaccessor" id=":6T@tUaBwoaI5C|jT3r[">
+                            <field name="NAME">customfield_11700</field>
+                            <value name="var">
+                              <block type="variables_get" id="/{h)pg}m^NX++HV$Xpm;">
+                                <field name="VAR" id="4=^jB.SLUY75hwB+AQke">jira</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="text" id="X%$tmJ2X.p}CLIpvLdvi">
+                            <field name="TEXT">11500</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <statement name="Output">
+                  <block type="qacheck" id="197,z|NNo8moD5@xNxmq">
+                    <field name="qacheckId">C1-LLReqReleased</field>
+                    <field name="description">Are all low-level requirements in status 'released'?</field>
+                    <value name="constraint">
+                      <block type="variables_get" id="B~C0AM|d*k)r7d~B(-Zv">
+                        <field name="VAR" id="un05j[MTL.X~5saKuk$9">jama</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="qacheck" id="qS_@EU/ztgg3*?qt9;Jb">
+                        <field name="qacheckId">C2-LLReleaseAssigned</field>
+                        <field name="description">Do all low-level requirements have a release assigned?</field>
+                        <value name="constraint">
+                          <block type="procedures_callreturn" id="R+j{M/UJ?jzDgRp4!LBT">
+                            <mutation name="SSS2SRScheck">
+                              <arg name="jamaitem"></arg>
+                            </mutation>
+                            <value name="ARG0">
+                              <block type="variables_get" id="er*HHO[52Bj%Qm)a4wAN">
+                                <field name="VAR" id="un05j[MTL.X~5saKuk$9">jama</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="qacheck" id="R@sMu4gEiSlBX}wnw7u|">
+                            <field name="qacheckId">C3-LL2HL</field>
+                            <field name="description">Do all low-level requirements have a upstream trace to a high-level requirement?</field>
+                            <value name="constraint">
+                              <block type="procedures_callreturn" id="Mx`0jtd}9HoubI#g~1J`">
+                                <mutation name="SSS2SRScheck">
+                                  <arg name="jamaitem"></arg>
+                                </mutation>
+                                <value name="ARG0">
+                                  <block type="variables_get" id="(F^HK7/BE~Z[dQHp0P*}">
+                                    <field name="VAR" id="un05j[MTL.X~5saKuk$9">jama</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="qacheck" id="5F4m(r5|H[n_(6Z{UW{Q">
+                                <field name="qacheckId">C4-LL2WP</field>
+                                <field name="description">Do no low-level requirement have a trace to another SubWP with a status other than 'closed'?</field>
+                                <value name="constraint">
+                                  <block type="procedures_callreturn" id="@LR]bY1^^cDGpf,g(_wS">
+                                    <mutation name="SSS2SRScheck">
+                                      <arg name="jamaitem"></arg>
+                                    </mutation>
+                                    <value name="ARG0">
+                                      <block type="variables_get" id="_m=}@zpumqYPcHMF=vil">
+                                        <field name="VAR" id="un05j[MTL.X~5saKuk$9">jama</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <next>
+                  <block type="step" id="fndjI~Jb#}%#c%SQ*ohc">
+                    <field name="StepId">S4</field>
+                    <statement name="Input">
+                      <block type="artuse" id="JNbjoZJ7n~9l+hH|e@cK">
+                        <field name="roletext">Role</field>
+                        <field name="NAME">jira</field>
+                        <value name="NAME">
+                          <block type="variables_get" id="CUWvd^VF:746}bv]ftGg">
+                            <field name="VAR" id="4=^jB.SLUY75hwB+AQke">jira</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="artuse" id="gwOY5Xy)1{%oDNt2NtM_">
+                            <field name="roletext">Role</field>
+                            <field name="NAME">jama</field>
+                            <value name="NAME">
+                              <block type="variables_get" id="GJP)|^=8iK}kVZ?A]_Ju">
+                                <field name="VAR" id="un05j[MTL.X~5saKuk$9">jama</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <statement name="Transitions">
+                      <block type="transition" id="Vh{m@e-GYy7rrv(R5/L`">
+                        <field name="State">ACTIVE</field>
+                        <value name="condition">
+                          <block type="logic_compare" id="IaXEz1UqpOT#cO:fa|fM">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="fieldaccessor" id="5n;@m.pEsx4Wn/lszk@N">
+                                <field name="NAME">customfield_11700</field>
+                                <value name="var">
+                                  <block type="variables_get" id="j:U29P[6hH]/o*{8@_;.">
+                                    <field name="VAR" id="4=^jB.SLUY75hwB+AQke">jira</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="text" id="KCHLuS`oZnIJo0MjC=:S">
+                                <field name="TEXT">11500</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="transition" id="ZpF8QQRJ2U}G!O3[PXhF">
+                            <field name="State">COMPLETED</field>
+                            <value name="condition">
+                              <block type="logic_compare" id="_|0gb!#:^u6sT6G(gz@9">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="fieldaccessor" id="5*/uVHan`y/Rh6q5@#,:">
+                                    <field name="NAME">customfield_11700</field>
+                                    <value name="var">
+                                      <block type="variables_get" id="eY$q]=kLXZ?_Uhv4,bJ0">
+                                        <field name="VAR" id="4=^jB.SLUY75hwB+AQke">jira</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="text" id="TiXCRdzf6Wr(%]A8:NCT">
+                                    <field name="TEXT">11500</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <statement name="Output">
+                      <block type="qacheck" id="xnFk}lVScwKmSTj/xjLI">
+                        <field name="qacheckId">C5-LL2FU</field>
+                        <field name="description">Do all low-level requirements have an downstream trace to exactly one Functional Unit?</field>
+                        <value name="constraint">
+                          <block type="procedures_callreturn" id="5s*X)z,mcJVKo9[Eoaif">
+                            <mutation name="SSS2SRScheck">
+                              <arg name="jamaitem"></arg>
+                            </mutation>
+                            <value name="ARG0">
+                              <block type="variables_get" id="|PH`=D6![JVX=l(Y}`or">
+                                <field name="VAR" id="un05j[MTL.X~5saKuk$9">jama</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="step" id="p673.5gn:6u0#IH$4Xu)">
+                        <field name="StepId">S7</field>
+                        <statement name="Input">
+                          <block type="artuse" id="V(Ot,5vKad|YVD-~l7(?">
+                            <field name="roletext">Role</field>
+                            <field name="NAME">jira</field>
+                            <value name="NAME">
+                              <block type="variables_get" id="IyJ[}g6R0jA1c{R,jx6@">
+                                <field name="VAR" id="4=^jB.SLUY75hwB+AQke">jira</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="artuse" id="X8wzSzrOM4tt9s-4uXMC">
+                                <field name="roletext">Role</field>
+                                <field name="NAME">jama</field>
+                                <value name="NAME">
+                                  <block type="variables_get" id="+W-zp03yn*KSU]F-wC!F">
+                                    <field name="VAR" id="un05j[MTL.X~5saKuk$9">jama</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                        <statement name="Transitions">
+                          <block type="transition" id="/aE(kS{+#DxarljLYeu3">
+                            <field name="State">IGNORED</field>
+                            <value name="condition">
+                              <block type="logic_compare" id="JEKxZl*6[yhl1?M:Ll;@">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="fieldaccessor" id="Iqh),~_w(}z{zOXxX(b%">
+                                    <field name="NAME">customfield_11700</field>
+                                    <value name="var">
+                                      <block type="variables_get" id="q$SUjgr(Z$fr^@8nyi%i">
+                                        <field name="VAR" id="4=^jB.SLUY75hwB+AQke">jira</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="text" id="TJGxKhewn)h)XYX~oKAu">
+                                    <field name="TEXT">11500</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
+                        <statement name="Output">
+                          <block type="qacheck" id="94iR^Jjj7J=B,^d9m/06">
+                            <field name="qacheckId">C6-LL2TC</field>
+                            <field name="description">Do all low-level requirements have a downstream link to at least one test case matching the requirement's verification method?</field>
+                            <value name="constraint">
+                              <block type="procedures_callreturn" id="bImUVQSJ?zN9=d|S9}Yp">
+                                <mutation name="SSS2SRScheck">
+                                  <arg name="jamaitem"></arg>
+                                </mutation>
+                                <value name="ARG0">
+                                  <block type="variables_get" id="tV|vB08}:mo3.J[%kz8K">
+                                    <field name="VAR" id="un05j[MTL.X~5saKuk$9">jama</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="qacheck" id="T6T;R5xjs$O-X-Q|e;a^">
+                                <field name="qacheckId">C7-WPFixVersion</field>
+                                <field name="description">Has the SubWP’s Jira issue at least one 'Fixversion'?</field>
+                                <value name="constraint">
+                                  <block type="procedures_callreturn" id="dlvtw{eeHvz/}EGe65*~">
+                                    <mutation name="SSS2SRScheck">
+                                      <arg name="jamaitem"></arg>
+                                    </mutation>
+                                    <value name="ARG0">
+                                      <block type="variables_get" id="9IA9F~#kkSM0]REyo/9(">
+                                        <field name="VAR" id="4=^jB.SLUY75hwB+AQke">jira</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="step" id="d@@=06Pc1}*jGh%3/|l1">
+                            <field name="StepId">S8</field>
+                            <statement name="Input">
+                              <block type="artuse" id="DE;Tr0!CbUI-/zqd.,-E">
+                                <field name="roletext">Role</field>
+                                <field name="NAME">jira</field>
+                                <value name="NAME">
+                                  <block type="variables_get" id="2rz4r!IW?ND7_O}PzF[y">
+                                    <field name="VAR" id="4=^jB.SLUY75hwB+AQke">jira</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                            <statement name="Transitions">
+                              <block type="transition" id="6jur`nt^bZx^=ncw5~*]">
+                                <field name="State">ENABLED</field>
+                                <value name="condition">
+                                  <block type="logic_compare" id="hd0PIO]Knb8GH2b,7kYh">
+                                    <field name="OP">EQ</field>
+                                    <value name="A">
+                                      <block type="fieldaccessor" id="uH=;{3_88cG#(%*2-R)?">
+                                        <field name="NAME">status</field>
+                                        <value name="var">
+                                          <block type="variables_get" id="N0J{Hs(-P}(9+-AG3}k-">
+                                            <field name="VAR" id="4=^jB.SLUY75hwB+AQke">jira</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="text" id="k;r,dYMLv$MPx!.LPr.s">
+                                        <field name="TEXT">6</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="transition" id="U5R#a~Vv366.2gS!MhNZ">
+                                    <field name="State">COMPLETED</field>
+                                    <value name="condition">
+                                      <block type="logic_compare" id="l$A_#ttvFa5D[fS`(:h`">
+                                        <field name="OP">EQ</field>
+                                        <value name="A">
+                                          <block type="fieldaccessor" id="nEHwrN*lYp1/y+`7[yJ#">
+                                            <field name="NAME">status</field>
+                                            <value name="var">
+                                              <block type="variables_get" id="r*_sE#U;ltq:YpJ+1+G{">
+                                                <field name="VAR" id="4=^jB.SLUY75hwB+AQke">jira</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="text" id="m9wk.3icu-FrdX{`w9-#">
+                                            <field name="TEXT">6</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="transition" id="$Q{vWO]3PukDTpHLNfqx">
+                                        <field name="State">IGNORED</field>
+                                        <value name="condition">
+                                          <block type="logic_compare" id="Y/JX~/~5lT430lnDDL+l">
+                                            <field name="OP">EQ</field>
+                                            <value name="A">
+                                              <block type="fieldaccessor" id="]rh(A9~6M;wq`_t!*,0M">
+                                                <field name="NAME">status</field>
+                                                <value name="var">
+                                                  <block type="variables_get" id="vz$?7D@1st=PtA_3^;/z">
+                                                    <field name="VAR" id="4=^jB.SLUY75hwB+AQke">jira</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <value name="B">
+                                              <block type="text" id="VF]*V;jZTM](2bfU9z+G">
+                                                <field name="TEXT">6</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </statement>
+                            <statement name="Output">
+                              <block type="qacheck" id="vx45^nBnC~G^LO6kqgOy">
+                                <field name="qacheckId">C7-WPResolved</field>
+                                <field name="description">Is the SubWP’s Jira issue set to 'resolved'?</field>
+                                <value name="constraint">
+                                  <block type="procedures_callreturn" id="Az1c~D:,;K*LmbzaMe#[">
+                                    <mutation name="SSS2SRScheck">
+                                      <arg name="jamaitem"></arg>
+                                    </mutation>
+                                    <value name="ARG0">
+                                      <block type="variables_get" id="(?R,~~IT8{e$#)pCGw7H">
+                                        <field name="VAR" id="4=^jB.SLUY75hwB+AQke">jira</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defreturn" id="H[B_xu@Q8g142=|YADf9" x="438" y="363">
+    <mutation>
+      <arg name="jamaitem" varid="d,%@(u#o4|5tc-2_)Spi"></arg>
+    </mutation>
+    <field name="NAME">SSS2SRScheck</field>
+    <comment pinned="false" h="80" w="160">Describe this function...</comment>
+    <value name="RETURN">
+      <block type="logic_boolean" id="]|7kO+}gX9R1*bpG@wX(">
+        <field name="BOOL">TRUE</field>
+      </block>
+    </value>
+  </block>
+  <block type="procedures_callreturn" id="?U4![1wF})^#?DuT)-?w" x="588" y="488">
+    <mutation name="SSS2SRScheck">
+      <arg name="jamaitem"></arg>
+    </mutation>
+    <value name="ARG0">
+      <block type="variables_get" id="4BAzS#7hsK|B(KwyEgLM">
+        <field name="VAR" id="un05j[MTL.X~5saKuk$9">jama</field>
+      </block>
+    </value>
+  </block>
+</xml>

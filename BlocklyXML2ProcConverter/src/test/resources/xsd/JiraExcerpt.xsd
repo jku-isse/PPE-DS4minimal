@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/JiraExcerpt" xmlns:tns="http://www.example.org/JiraExcerpt" elementFormDefault="qualified">
+
+    <complexType name="TJiraIssue">
+    	<sequence>
+    		<element name="user" type="tns:TJiraStatus" minOccurs="1" maxOccurs="1"/>    		
+    		<element name="assignee" type="tns:TJiraUser" minOccurs="0" maxOccurs="1"/>
+    		<element name="reporter" type="tns:TJiraUser" minOccurs="0" maxOccurs="1"/>
+    		<element name="issuetype" type="tns:TJiraIssueType" minOccurs="1" maxOccurs="1"/>
+    		<element name="subtasks" type="tns:TJiraIssue" minOccurs="0" maxOccurs="unbounded"/>
+    		<element name="issuelinks" type="tns:TJiraIssueLink" minOccurs="0" maxOccurs="unbounded"/>
+    	</sequence>
+    	<attribute name="id" type="string" use="required" />
+    	<attribute name="key" type="string" use="required" />
+    	<attribute name="progress" type="integer" use="required" />
+    	<attribute name="description" type="string" use="required" />
+
+    </complexType>
+
+ 	<complexType name="TJiraIssueLink">
+    	<sequence>
+    		<element name="remote" type="tns:TJiraIssue" minOccurs="1" maxOccurs="1"/>
+    	</sequence>
+    	<attribute name="id" type="string" use="required"/>
+    	<attribute name="name" type="string" use="required"/>    	    	    
+    </complexType>
+
+    <complexType name="TJiraIssueType">
+    	<attribute name="id" type="string" use="required"/>
+    	<attribute name="name" type="string" use="required"/>
+    	<attribute name="description" type="string" use="required"/>    	
+    	<attribute name="subtask" type="boolean" use="required"/>
+    </complexType>
+
+    <complexType name="TJiraUser">
+    	<attribute name="id" type="string" use="required"/>
+    	<attribute name="name" type="string" use="required"/>
+    	<attribute name="displayName" type="string" use="required"/>    	
+    </complexType>
+    
+    <complexType name="TJiraStatus">
+    	<attribute name="id" type="string" use="required"/>
+    	<attribute name="key" type="string" use="required"/>
+    	<attribute name="name" type="string" use="required"/>
+    	<attribute name="description" type="string" use="required"/>   
+    </complexType>
+    
+	
+
+    <element name="JiraUser" type="tns:TJiraUser"></element>
+    <element name="JiraStatus" type="tns:TJiraStatus"></element>
+    <element name="JiraIssue" type="tns:TJiraIssue"></element>
+    
+</schema>

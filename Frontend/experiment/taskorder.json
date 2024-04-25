@@ -1,0 +1,29 @@
+{
+  "dev": {
+    "participantId": "dev",
+    "sequence": [
+      {
+        "processId": "*",
+        "repairSupportTypeId": "RESTRICTION"
+      }
+    ]
+  },
+  "norepair": {
+    "participantId": "norepair",
+    "sequence": [
+      {
+        "processId": "*",
+        "repairSupportTypeId": "NONE"
+      }
+    ]
+  },
+  "repaironly": {
+    "participantId": "repaironly",
+    "sequence": [
+      {
+        "processId": "*",
+        "repairSupportTypeId": "REPAIR"
+      }
+    ]
+  }
+}

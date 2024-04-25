@@ -1,0 +1,377 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="2j|,[DIT?-hKuh!6q0.j">story</variable>
+    <variable id="?a/M-[,!Gxxytvin$4r[">sucSubtask</variable>
+    <variable id="$rm^?Wl3]jv;rGU{jHWr">mmfSubtask</variable>
+    <variable id="C{o:b?O2lt(`LH-)FyTz">cscSubtask</variable>
+    <variable id="iE*ut~F6]r7Sm2U-{dpu">csc</variable>
+    <variable id="n/_30,1I|=DI-5urbMdH">suc</variable>
+    <variable id="X}ObR)45Oebi{98R8n}]">buc</variable>
+    <variable id="|/8=R9!oS@JkE/x-^S{!">mmf</variable>
+  </variables>
+  <block type="procedures_defnoreturn" id="cg8YZw4ECPjUHbFqIQ6G" x="13" y="63">
+    <mutation>
+      <arg name="story" varid="2j|,[DIT?-hKuh!6q0.j"></arg>
+    </mutation>
+    <field name="NAME">SIELA</field>
+    <comment pinned="false" h="80" w="160">Describe this function...</comment>
+    <statement name="STACK">
+      <block type="variables_set" id="eMNPr@^cBSp*r:KqQ?Ls">
+        <field name="VAR" id="2j|,[DIT?-hKuh!6q0.j">story</field>
+        <value name="VALUE">
+          <block type="artifact" id="*9dJ|o_.=K]eeb1q8qqX">
+            <field name="Type">IJiraArtifact</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="I]`@lp?Nt?7[1v2O5ts[">
+            <field name="VAR" id="?a/M-[,!Gxxytvin$4r[">sucSubtask</field>
+            <value name="VALUE">
+              <block type="artifact" id="Z]F5r3v,|U_xBNO)-H}k">
+                <field name="Type">IJiraArtifact</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="DpUfzNOW]tu*t-JrmRvp">
+                <field name="VAR" id="$rm^?Wl3]jv;rGU{jHWr">mmfSubtask</field>
+                <value name="VALUE">
+                  <block type="artifact" id="Xwa*(SxN5Ea=SR!xF}KY">
+                    <field name="Type">IJiraArtifact</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="ackMk{IWYw8?nA4?C?40">
+                    <field name="VAR" id="C{o:b?O2lt(`LH-)FyTz">cscSubtask</field>
+                    <value name="VALUE">
+                      <block type="artifact" id="f?=I}Vt;-Pqw=kac.z+o">
+                        <field name="Type">IJiraArtifact</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="S.`X)d:7j;v-[6EG|Q+B">
+                        <field name="VAR" id="iE*ut~F6]r7Sm2U-{dpu">csc</field>
+                        <value name="VALUE">
+                          <block type="artifact" id="y)))Ci9QjKE2Oiht|FO+">
+                            <field name="Type">IJiraArtifact</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="*g#^~|-:%(j=y[u)m+:[">
+                            <field name="VAR" id="n/_30,1I|=DI-5urbMdH">suc</field>
+                            <value name="VALUE">
+                              <block type="artifact" id="ZVdQ!niwv(h-wnU2]wI(">
+                                <field name="Type">IJiraArtifact</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="?N5N#b$a{k(^Af9?XQ-@">
+                                <field name="VAR" id="X}ObR)45Oebi{98R8n}]">buc</field>
+                                <value name="VALUE">
+                                  <block type="artifact" id="PC[BrYl@.g_CgE}zRUy/">
+                                    <field name="Type">IJiraArtifact</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="variables_set" id="z#a`./=5C6,-2*)k({A6">
+                                    <field name="VAR" id="|/8=R9!oS@JkE/x-^S{!">mmf</field>
+                                    <value name="VALUE">
+                                      <block type="artifact" id="iAv/6XxRcBu{gs|meup{">
+                                        <field name="Type">IJiraArtifact</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="artuse" id="$ESI_[jaig-#tg6|]!7i">
+                                        <field name="roletext">Role</field>
+                                        <field name="NAME">story</field>
+                                        <value name="NAME">
+                                          <block type="variables_get" id="f9A2Dk%2OzrApR6d3M`o">
+                                            <field name="VAR" id="2j|,[DIT?-hKuh!6q0.j">story</field>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="step" id=";4U_/lm|)7.(Yu{(L--F">
+                                            <field name="StepId">PrepareProcess</field>
+                                            <statement name="Input">
+                                              <block type="artuse" id="!p~Jnq|k3`M.1RI_cBxK">
+                                                <field name="roletext">Role</field>
+                                                <field name="NAME">story</field>
+                                                <value name="NAME">
+                                                  <block type="variables_get" id="*D0or@Vei@^l3-/##?XH">
+                                                    <field name="VAR" id="2j|,[DIT?-hKuh!6q0.j">story</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </statement>
+                                            <statement name="Output">
+                                              <block type="artuse" id="M/(Nj|R8yKGsR)Y%oF.p">
+                                                <field name="roletext">Role</field>
+                                                <field name="NAME">mmfSubtask</field>
+                                                <value name="NAME">
+                                                  <block type="variables_get" id="N!%[FyY}]lf]XTWtpgc3">
+                                                    <field name="VAR" id="$rm^?Wl3]jv;rGU{jHWr">mmfSubtask</field>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="artuse" id="gOgVRA.Q_GwXrkX)=`S]">
+                                                    <field name="roletext">Role</field>
+                                                    <field name="NAME">sucSubtask</field>
+                                                    <value name="NAME">
+                                                      <block type="variables_get" id="Ew[rmH!~LrqqBKGkAIOU">
+                                                        <field name="VAR" id="?a/M-[,!Gxxytvin$4r[">sucSubtask</field>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="artuse" id="BRF~1ot,*J@-VyU}r[[0">
+                                                        <field name="roletext">Role</field>
+                                                        <field name="NAME">cscSubtask</field>
+                                                        <value name="NAME">
+                                                          <block type="variables_get" id="mNH#.sbePHLp^Zeg3K10">
+                                                            <field name="VAR" id="C{o:b?O2lt(`LH-)FyTz">cscSubtask</field>
+                                                          </block>
+                                                        </value>
+                                                        <next>
+                                                          <block type="qacheck" id="?E#Q8b5bGJtA;RPAgW)X">
+                                                            <field name="qacheckId">ProcessTraceToSR</field>
+                                                            <field name="description">Each Process (story) must trace to at least one Stakeholder Request (SR) via a 'Realized' Link</field>
+                                                            <value name="constraint">
+                                                              <block type="variables_get" id="GQptu,XJ7k6L/83Vc.4]">
+                                                                <field name="VAR" id="2j|,[DIT?-hKuh!6q0.j">story</field>
+                                                              </block>
+                                                            </value>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </statement>
+                                            <next>
+                                              <block type="step" id="uScE)RIr#sqZELeN[[)r">
+                                                <field name="StepId">WriteOrReviseMMF</field>
+                                                <statement name="Input">
+                                                  <block type="artuse" id="N2T9:S}^TcvTta2wNx6c">
+                                                    <field name="roletext">Role</field>
+                                                    <field name="NAME">mmfSubtask</field>
+                                                    <value name="NAME">
+                                                      <block type="variables_get" id="LztqX,(_IJ]0h.6xb%;O">
+                                                        <field name="VAR" id="$rm^?Wl3]jv;rGU{jHWr">mmfSubtask</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </statement>
+                                                <statement name="Transitions">
+                                                  <block type="transition" id="efqt~wsMU_Dkl_@M,Tcd">
+                                                    <field name="State">ACTIVE</field>
+                                                    <value name="condition">
+                                                      <block type="variables_get" id="?3Ve#DQ]]W[yDS,oLJ+2">
+                                                        <field name="VAR" id="$rm^?Wl3]jv;rGU{jHWr">mmfSubtask</field>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="transition" id="Kqr{?fM!rKZ:}+4!$x-/">
+                                                        <field name="State">COMPLETED</field>
+                                                        <value name="condition">
+                                                          <block type="variables_get" id="PKoFK1ld;rv5IY9A?~Z3">
+                                                            <field name="VAR" id="$rm^?Wl3]jv;rGU{jHWr">mmfSubtask</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </statement>
+                                                <statement name="Output">
+                                                  <block type="artuse" id="UE47s4d`_[K}ND?keE0t">
+                                                    <field name="roletext">Role</field>
+                                                    <field name="NAME">mmf</field>
+                                                    <value name="NAME">
+                                                      <block type="variables_get" id="aOl|]ea:_nu*.l:Xyl7?">
+                                                        <field name="VAR" id="|/8=R9!oS@JkE/x-^S{!">mmf</field>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="artuse" id="Rt2[/*LB=#@u6oOL;Dv*">
+                                                        <field name="roletext">Role</field>
+                                                        <field name="NAME">buc</field>
+                                                        <value name="NAME">
+                                                          <block type="variables_get" id="yZ/[td`:x^,e,GNBJI@5">
+                                                            <field name="VAR" id="X}ObR)45Oebi{98R8n}]">buc</field>
+                                                          </block>
+                                                        </value>
+                                                        <next>
+                                                          <block type="qacheck" id="iD(r|AIrJv|DmR-^iH7c">
+                                                            <field name="qacheckId">MMFtraceToSR</field>
+                                                            <field name="description">Each linked MMF must trace to at least one Stakeholder Request (SR) via a 'Realizes' link.</field>
+                                                            <value name="constraint">
+                                                              <block type="variables_get" id="#c8vt_9|d{e7_50xG06b">
+                                                                <field name="VAR" id="|/8=R9!oS@JkE/x-^S{!">mmf</field>
+                                                              </block>
+                                                            </value>
+                                                            <next>
+                                                              <block type="qacheck" id="$2:az]P34$6]w8Zv1D#1">
+                                                                <field name="qacheckId">MMFtraceToBUC</field>
+                                                                <field name="description">Each linked MMF must trace to at least one Business Use Case (BUC) via a 'Realizes' link.</field>
+                                                                <value name="constraint">
+                                                                  <block type="variables_get" id="xxjWgl/!;Xa]=R#0bg~U">
+                                                                    <field name="VAR" id="|/8=R9!oS@JkE/x-^S{!">mmf</field>
+                                                                  </block>
+                                                                </value>
+                                                                <next>
+                                                                  <block type="qacheck" id="m3*X.F!nr%+H^@4S$V88">
+                                                                    <field name="qacheckId">SRtraceToBUC</field>
+                                                                    <field name="description">Each SR linked via an MMF must trace to at least one  Business Use Case (BUC) via a 'Relates' link.</field>
+                                                                    <value name="constraint">
+                                                                      <block type="variables_get" id="U!^$ovTY:ntP:0/`2{#B">
+                                                                        <field name="VAR" id="|/8=R9!oS@JkE/x-^S{!">mmf</field>
+                                                                      </block>
+                                                                    </value>
+                                                                  </block>
+                                                                </next>
+                                                              </block>
+                                                            </next>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </statement>
+                                                <next>
+                                                  <block type="step" id="+gHMHRT)e(;.^.03:tK/">
+                                                    <field name="StepId">RefineToSUC</field>
+                                                    <statement name="Input">
+                                                      <block type="artuse" id=";qy!b9Eg?)w-S}`$1XrY">
+                                                        <field name="roletext">Role</field>
+                                                        <field name="NAME">sucSubtask</field>
+                                                        <value name="NAME">
+                                                          <block type="variables_get" id="Vzky-j/uzcR:Tb*()(@N">
+                                                            <field name="VAR" id="?a/M-[,!Gxxytvin$4r[">sucSubtask</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </statement>
+                                                    <statement name="Transitions">
+                                                      <block type="transition" id="YhIm@ybnX-$utIepcZ}}">
+                                                        <field name="State">ACTIVE</field>
+                                                        <value name="condition">
+                                                          <block type="variables_get" id="eP%d_%1qV9)(K)daP@w+">
+                                                            <field name="VAR" id="?a/M-[,!Gxxytvin$4r[">sucSubtask</field>
+                                                          </block>
+                                                        </value>
+                                                        <next>
+                                                          <block type="transition" id="?59gNg/yc9CS3ojNK^YW">
+                                                            <field name="State">COMPLETED</field>
+                                                            <value name="condition">
+                                                              <block type="variables_get" id="m.#TrY}}zF6z/Ajy#~^d">
+                                                                <field name="VAR" id="?a/M-[,!Gxxytvin$4r[">sucSubtask</field>
+                                                              </block>
+                                                            </value>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </statement>
+                                                    <statement name="Output">
+                                                      <block type="artuse" id="vTK|vc:5/PivX[b]lU?W">
+                                                        <field name="roletext">Role</field>
+                                                        <field name="NAME">suc</field>
+                                                        <value name="NAME">
+                                                          <block type="variables_get" id="ve0T=V54o}cC!6m+7q`.">
+                                                            <field name="VAR" id="n/_30,1I|=DI-5urbMdH">suc</field>
+                                                          </block>
+                                                        </value>
+                                                        <next>
+                                                          <block type="qacheck" id="H6W[?uedL-R!e$ne2rdM">
+                                                            <field name="qacheckId">SUCtraceToSUCorBUC</field>
+                                                            <field name="description">Each SUC must trace to at least one (parent) System Use Case (SUC) or a Business Use Case (BUC) via a 'Realizes' link.</field>
+                                                            <value name="constraint">
+                                                              <block type="variables_get" id="OvuVhlAR)9Ws@2[w+1%J">
+                                                                <field name="VAR" id="n/_30,1I|=DI-5urbMdH">suc</field>
+                                                              </block>
+                                                            </value>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </statement>
+                                                    <next>
+                                                      <block type="step" id="Uq1TZfB+=sn0k4)P#@PZ">
+                                                        <field name="StepId">CreateOrRefineCSC</field>
+                                                        <statement name="Input">
+                                                          <block type="artuse" id="c2#`i@OU)7Smzkq20HBq">
+                                                            <field name="roletext">Role</field>
+                                                            <field name="NAME">cscSubtask</field>
+                                                            <value name="NAME">
+                                                              <block type="variables_get" id="Te,G@-t=-DTMKwQ*CmQ{">
+                                                                <field name="VAR" id="C{o:b?O2lt(`LH-)FyTz">cscSubtask</field>
+                                                              </block>
+                                                            </value>
+                                                          </block>
+                                                        </statement>
+                                                        <statement name="Transitions">
+                                                          <block type="transition" id="ZGyO^A(AXJc%HF4%)v8)">
+                                                            <field name="State">ACTIVE</field>
+                                                            <value name="condition">
+                                                              <block type="variables_get" id="d$]4zW:.([NGfEHqt*$~">
+                                                                <field name="VAR" id="C{o:b?O2lt(`LH-)FyTz">cscSubtask</field>
+                                                              </block>
+                                                            </value>
+                                                            <next>
+                                                              <block type="transition" id="6a%JC-F5fGx]7=R/!)7@">
+                                                                <field name="State">COMPLETED</field>
+                                                                <value name="condition">
+                                                                  <block type="variables_get" id=",%(`T/V_4|G:mT$;sSa.">
+                                                                    <field name="VAR" id="C{o:b?O2lt(`LH-)FyTz">cscSubtask</field>
+                                                                  </block>
+                                                                </value>
+                                                              </block>
+                                                            </next>
+                                                          </block>
+                                                        </statement>
+                                                        <statement name="Output">
+                                                          <block type="artuse" id="!]Jg#^P9~,oTi(ob2pt{">
+                                                            <field name="roletext">Role</field>
+                                                            <field name="NAME">csc</field>
+                                                            <value name="NAME">
+                                                              <block type="variables_get" id="6ejr]4o^0nFZaHsFfx26">
+                                                                <field name="VAR" id="iE*ut~F6]r7Sm2U-{dpu">csc</field>
+                                                              </block>
+                                                            </value>
+                                                            <next>
+                                                              <block type="qacheck" id="+9c]!jwzoz+Hz|Y-wM;x">
+                                                                <field name="qacheckId">CSCtraceToSUC</field>
+                                                                <field name="description">Each CSC must trace to at least one System Use Case (SUC) via a 'Realizes' link.</field>
+                                                                <value name="constraint">
+                                                                  <block type="variables_get" id="^V|?$_R(P#1rO8uF#Nrf">
+                                                                    <field name="VAR" id="iE*ut~F6]r7Sm2U-{dpu">csc</field>
+                                                                  </block>
+                                                                </value>
+                                                              </block>
+                                                            </next>
+                                                          </block>
+                                                        </statement>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
